@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Container = styled.section`
   display: flex;
   margin: 0 3.5rem;
@@ -7,7 +6,6 @@ export const Container = styled.section`
   padding: 30px 0;
   justify-content: space-between;
 `;
-
 export const Button = styled.button`
   background-color: #e50914;
   width: 84px;
@@ -17,6 +15,10 @@ export const Button = styled.button`
   font-size: 15px;
   border-radius: 3px;
   padding: 7px 17px;
+  cursor: pointer;
+  &:hover {
+    background: #f40612;
+  }
 `;
 
 export const Image = styled.img`
