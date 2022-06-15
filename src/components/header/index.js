@@ -1,3 +1,8 @@
-import { Header } from './Header';
+import { Accordion } from './accordion';
+import { Card } from './card';
+import { Feature } from './feature';
+import { Form } from './form';
+import { Footer } from './footer';
+import { Header } from './header';
 
-export { Header };
+export { Accordion, Card, Feature, Form, Footer, Header };
