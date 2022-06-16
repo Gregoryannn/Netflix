@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\components\\accordion\\styles",
+    "\\src\\components\\feature\\styles",
+    "\\src\\components\\footer\\styles",
+    "\\src\\components\\header",
+    "\\src\\components\\header\\styles",
+    "\\src\\components\\wrapper\\styles",
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\C:\\Users\\asus\\Source\\Repos\\Netflix-Clone",
+  "SelectedNode": "\\src\\pages\\home.js",
   "PreviewInSolutionExplorer": false
 }
