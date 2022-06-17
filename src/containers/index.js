@@ -1,5 +1,8 @@
+import { BrowseContainer } from './browse';
 import { HeaderContainer } from './header';
 import { FaqsContainer } from './faqs';
 import { FooterContainer } from './footer';
+import { SelectProfileContainer } from './profiles';
 
-export { HeaderContainer, FaqsContainer, FooterContainer };
+
+export { BrowseContainer, HeaderContainer, SelectProfileContainer, FaqsContainer, FooterContainer };
