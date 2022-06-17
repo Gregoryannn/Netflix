@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
-import { firebase } from '../firebase';
-import { Header, Feature, Footer } from '../components';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { FirebaseContext } from '../context';
+import { Header, Feature } from '../components';
+import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
 
 export function Signin() {
+    const history = useHistory();
+    const { firebase } = useContext(FirebaseContext);
+
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
+
     const isInvalid = password === '' || emailAddress === '';
 
     const handleSignin = (event) => {
         event.preventDefault();
-
         firebase
             .auth()
             .signInWithEmailAndPassword(emailAddress, password)
-            .then((authUser) => console.log('authUser', authUser))
+            .then(() => {
+                setEmailAddress('');
+                setPassword('');
+                setError('');
+                history.push(ROUTES.BROWSE);
+            })
             .catch((error) => setError(error.message));
     };
 
@@ -26,7 +36,6 @@ export function Signin() {
                     <Header.Logo src={logo} alt="Netflix" />
                     <Header.Link to="/signin">Sign In</Header.Link>
                 </Header.Frame>
-
                 <Feature>
                     <form onSubmit={handleSignin} method="POST">
                         <div>
@@ -48,7 +57,6 @@ export function Signin() {
                         <button disabled={isInvalid} type="submit">
                             Login
                         </button>
-
                         {error && error}
                     </form>
                 </Feature>

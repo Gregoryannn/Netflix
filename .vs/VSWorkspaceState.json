@@ -2,14 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components\\accordion\\styles",
-    "\\src\\components\\feature\\styles",
-    "\\src\\components\\footer\\styles",
     "\\src\\components\\header",
     "\\src\\components\\header\\styles",
-    "\\src\\components\\wrapper\\styles",
     "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\pages\\home.js",
+  "SelectedNode": "\\src\\pages\\signup.js",
   "PreviewInSolutionExplorer": false
 }
