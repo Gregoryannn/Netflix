@@ -1,9 +1,10 @@
 import { Accordion } from './accordion';
 import { Card } from './card';
 import { Feature } from './feature';
-import { Form } from './form';
+import { OptForm } from './optform';
+import { SignInForm } from './signinform';
+import { Profiles } from './profiles';
 import { Footer } from './footer';
 import { Header } from './header';
-import { Wrapper } from './wrapper';
 
-export { Accordion, Card, Feature, Form, Footer, Header, Wrapper };
+export { Accordion, Card, Feature, OptForm, SignInForm, Profiles, Footer, Header };

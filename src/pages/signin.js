@@ -1,20 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from '../context';
-import { Header, Feature } from '../components';
+import { SignInForm } from '../components';
+import { HeaderContainer, FooterContainer } from '../containers';
 import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
 
 export function Signin() {
     const history = useHistory();
     const { firebase } = useContext(FirebaseContext);
-
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-
     const isInvalid = password === '' || emailAddress === '';
-
     const handleSignin = (event) => {
         event.preventDefault();
         firebase
@@ -31,36 +28,36 @@ export function Signin() {
 
     return (
         <>
-            <Header>
-                <Header.Frame>
-                    <Header.Logo src={logo} alt="Netflix" />
-                    <Header.Link to="/signin">Sign In</Header.Link>
-                </Header.Frame>
-                <Feature>
-                    <form onSubmit={handleSignin} method="POST">
-                        <div>
-                            Email address
-                            <input
-                                value={emailAddress}
-                                onChange={({ target }) => setEmailAddress(target.value)}
-                            />
-                        </div>
-                        <div>
-                            Password
-                            <input
-                                type="password"
-                                value={password}
-                                autoComplete="off"
-                                onChange={({ target }) => setPassword(target.value)}
-                            />
-                        </div>
-                        <button disabled={isInvalid} type="submit">
-                            Login
-                        </button>
-                        {error && error}
-                    </form>
-                </Feature>
-            </Header>
+               <HeaderContainer>
+                    <SignInForm>
+                        <SignInForm.Title>Sign In</SignInForm.Title>
+                        {error && <SignInForm.Error>{error}</SignInForm.Error>}
+                                <SignInForm.Base onSubmit={handleSignin} method="POST">
+                                    <SignInForm.Input
+                                        placeholder="Email address"
+                                        value={emailAddress}
+                                        onChange={({ target }) => setEmailAddress(target.value)}
+                                    />
+                                    <SignInForm.Input
+                                        type="password"
+                                        value={password}
+                                        autoComplete="off"
+                                        placeholder="Password"
+                                        onChange={({ target }) => setPassword(target.value)}
+                                    />
+                                    <SignInForm.Submit disabled={isInvalid} type="submit">
+                                        Sign In
+                                    </SignInForm.Submit>
+                                </SignInForm.Base>
+                            <SignInForm.Text>
+                        New to Netflix? <SignInForm.Link>Sign up now.</SignInForm.Link>
+                    </SignInForm.Text>
+                    <SignInForm.TextSmall>
+                        This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.
+                    </SignInForm.TextSmall>
+                </SignInForm>
+            </HeaderContainer>
+            <FooterContainer />
         </>
     );
 }
