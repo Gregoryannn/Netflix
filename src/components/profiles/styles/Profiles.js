@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,7 +7,6 @@ export const Container = styled.div`
   margin: auto;
   max-width: 80%;
 `;
-
 export const Title = styled.h1`
   width: 100%;
   color: #fff;
@@ -16,7 +14,6 @@ export const Title = styled.h1`
   text-align: center;
   font-weight: 500;
 `;
-
 export const List = styled.ul`
   padding: 0;
   margin: 0;
@@ -24,21 +21,13 @@ export const List = styled.ul`
   flex-direction: row;
 `;
 
-export const Item = styled.li`
-  max-height: 200px;
-  max-width: 200px;
-  list-style-type: none;
-  text-align: center;
-  margin-right: 30px;
-  cursor: pointer;
-  &:hover > img {
-    border: 3px solid white;
-  }
-  &:hover > p {
-    color: white;
-  }
-  &:last-of-type {
-    margin-right: 0;
+export const Name = styled.p`
+  color: #808080;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  &:hover {
+    font-weight: bold;
+    color: #e5e5e5;
   }
 `;
 
@@ -49,11 +38,23 @@ export const Picture = styled.img`
   border: 3px solid black;
 `;
 
-export const Name = styled.p`
-  color: #808080;
-  text-overflow: ellipsis;
-  font-size: 1rem;
-  &:hover {
-    color: #e5e5e5;
+export const Item = styled.li`
+  max-height: 200px;
+  max-width: 200px;
+  list-style-type: none;
+  text-align: center;
+  margin-right: 30px;
+  cursor: pointer;
+
+  &:hover > ${Picture} {
+    border: 3px solid white;
+  }
+  &:hover ${Name} {
+    font-weight: bold;
+    color: white;
+  }
+  &:last-of-type {
+    margin-right: 0;
   }
 `;
+

@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { BrowseContainer, FooterContainer, SelectProfileContainer } from '../containers';
-import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
-import { Header } from '../components';
+import { BrowseContainer, SelectProfileContainer } from '../containers';
+import { useFilms, useSeries } from '../hooks';
+import { selectionMap } from '../utils';
 
 export function Browse() {
-const [profileId, setProfileId] = useState(null);
+    const { series } = useSeries();
+    const { films } = useFilms();
+    const [profileId, setProfileId] = useState(null);
+    const [selection, setSelection] = useState('series');
+    const slideData = selectionMap({ series, films });
 
-  return profileId ? (
-        <>
-            <Header bg={false}>
-                <Header.Frame>
-                    <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
-                </Header.Frame>
-            </Header>
-
-            <BrowseContainer />
-            <FooterContainer />
-        </>
+    return profileId ? (
+   
+    <BrowseContainer selection={selection} setSelection={setSelection} slides={slideData[selection]} />
     ) : (
         <SelectProfileContainer setProfileId={setProfileId} />
     );
