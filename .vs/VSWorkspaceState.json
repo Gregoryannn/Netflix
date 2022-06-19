@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\components\\card\\styles",
+    "\\src\\components\\header\\styles",
+    "\\src\\components\\profiles\\styles",
+    "\\src\\fixtures",
+    "\\src\\hooks",
+    "\\src\\pages",
+    "\\src\\utils"
   ],
-  "SelectedNode": "\\C:\\Users\\asus\\Source\\Repos\\Netflix",
+  "SelectedNode": "\\src\\pages\\home.js",
   "PreviewInSolutionExplorer": false
 }

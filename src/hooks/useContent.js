@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
-import { FirebaseContext } from '../context';
+import { FirebaseContext } from '../context/firebase';
 
-
-export const useContent = (target) => {
+export default function useContent(target) {
         const [content, setContent] = useState([]);
         const { firebase } = useContext(FirebaseContext);
 
@@ -12,23 +11,20 @@ export const useContent = (target) => {
                 .collection(target)
                 .get()
                 .then((snapshot) => {
-                            const allContent = snapshot.docs.map((contentObj) => ({
-                            ...contentObj.data(),
-                            docId: contentObj.id,
-                        }));
+                    const allContent = snapshot.docs.map((contentObj) => ({
+                        ...contentObj.data(),
+                        docId: contentObj.id,
+                    }));
+                    setContent(allContent);
+                })
+                .catch((error) => {
+                    console.log(error.message);
+                });
+        }, []);
 
-        setContent(allContent);
-                    })
-                        .catch((error) => {
-                            console.log(error.message);
-                        });
-                }, []);
-
-            return { [target]: content };
-        };
-
-
-
+        return { [target]: content };
+  
+}
 
 
 
