@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\pages",
+    "\\src\\components\\accordion\\styles",
     "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\utils\\selectionMap.js",
+  "SelectedNode": "\\src\\utils\\index.js",
   "PreviewInSolutionExplorer": false
 }
