@@ -61,7 +61,6 @@ background - color: #0000008f;
 
 export const Image = styled.img`
 border: 0;
-background: url(${(props) => props.src});
 width: 100 %;
 max - width: 305px;
 height: auto;

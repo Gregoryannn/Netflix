@@ -2,10 +2,9 @@
 import { Feature, OptForm, Jumbotron } from '../components';
 import { HeaderContainer, FaqsContainer, FooterContainer } from '../containers';
 import jumboData from '../fixtures/jumbo';
-
 export default function Home() {
     return (
-        <>
+    <>
             <HeaderContainer>
                 <Feature>
                     <Feature.Title>Unlimited films, TV programmes and more.</Feature.Title>
@@ -19,20 +18,19 @@ export default function Home() {
                 </Feature>
             </HeaderContainer>
 
-           {jumboData.map((item) => (
-                <Jumbotron direction={item.direction}>
-                    <Jumbotron.Pane>
-                        <Jumbotron.Title>{item.title}</Jumbotron.Title>
-                        <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
-                    </Jumbotron.Pane>
-                    <Jumbotron.Pane>
-                        <Jumbotron.Image src={item.image} alt={item.alt} />
-                    </Jumbotron.Pane>
-                </Jumbotron>
-            ))}
-
-            <FaqsContainer />
-            <FooterContainer />
-        </>
-    );
+            {jumboData.map((item) => (
+                    <Jumbotron id={item.id} direction={item.direction}>
+                        <Jumbotron.Pane>
+                            <Jumbotron.Title>{item.title}</Jumbotron.Title>
+                            <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
+                        </Jumbotron.Pane>
+                        <Jumbotron.Pane>
+                            <Jumbotron.Image src={item.image} alt={item.alt} />
+                        </Jumbotron.Pane>
+                    </Jumbotron>
+      ))}
+                    <FaqsContainer />
+                    <FooterContainer />
+                </>
+            );
 }
