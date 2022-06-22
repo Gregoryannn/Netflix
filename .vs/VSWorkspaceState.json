@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\header",
+    "\\src\\components\\card\\styles",
+    "\\src\\components\\form\\styles",
     "\\src\\components\\header\\styles",
-    "\\src\\components\\jumbotron",
-    "\\src\\components\\jumbotron\\styles",
-    "\\src\\components\\profiles",
     "\\src\\components\\profiles\\styles",
-    "\\src\\components\\sign-in-form"
+    "\\src\\containers",
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\components\\profiles\\styles\\Profiles.js",
+  "SelectedNode": "\\src\\pages\\signup.js",
   "PreviewInSolutionExplorer": false
 }

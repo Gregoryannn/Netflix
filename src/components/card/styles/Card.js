@@ -6,10 +6,7 @@ flex - direction: column;
 margin: 0 3.5rem;
 margin - bottom: 50px;
 
-&:first-of-type {
-    margin-top: 50px;
-  }
-  &:last-of-type {
+&:last-of-type {
     margin-bottom: 0;
   }
 `;
