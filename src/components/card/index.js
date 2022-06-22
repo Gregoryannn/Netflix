@@ -1,11 +1,16 @@
-import React from 'react';
-import { Container, Group, Title, SubTitle, Text, Meta, Entities, Item, Image } from './styles/card';
+import React, { useState, useContext, createContext, createRef } from 'react';
+import { Container, Group, Title, SubTitle, Text, Feature, Meta, Entities, Item, Image } from './styles/card';
 
+export const FeatureContext = createContext();
 export default function Card({ children, ...restProps }) {
+    const [showFeature, setShowFeature] = useState(false);
+    const [itemFeature, setItemFeature] = useState(false);
+
     return (
-        <Container {...restProps} onLoad={() => 'loaded'}>
-            {children}
-        </Container>
+  
+    <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
+      <Container {...restProps}>{children}</Container>;
+    </FeatureContext.Provider>
     );
 }
 
@@ -30,13 +35,30 @@ Card.Entities = function CardEntities({ children, ...restProps }) {
 Card.Meta = function CardMeta({ children, ...restProps }) {
     return <Meta {...restProps}>{children}</Meta>;
 };
+
 Card.Item = function CardItem({ children, ...restProps }) {
     return <Item {...restProps}>{children}</Item>;
-};
+    Card.Item = function CardItem({ item, children, ...restProps }) {
+        const { showFeature, setShowFeature, setItemFeature } = useContext(FeatureContext);
 
-Card.Image = function CardImage({ ...restProps }) {
-        return <Image {...restProps} />;
+        return (
+            <Item
+                onClick={() => {
+                    setItemFeature(item);
+                    setShowFeature(true);
+                }}
+                {...restProps}
+            >
+                {children}
+            </Item>
+        );
     };
+
+Card.Feature = function CardFeature({ ...restProps }) {
+        const { showFeature, itemFeature } = useContext(FeatureContext);
+
+        return showFeature ? <Feature>{JSON.stringify(itemFeature)}</Feature> : null;
+};
 
 // loading state on cards (placeholder)
 // trigger dropdown panel
