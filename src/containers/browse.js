@@ -33,7 +33,7 @@ export default function BrowseContainer({ slides }) {
                     </Header.Group>
                     <Header.Group>
                         <Header.Search />
-                        <Header.Profile onClick={() => console.log('hellooooooooooooo')}>
+                        <Header.Profile>
                             <Header.Picture src={`/images/users/${user.photoURL}.png`} />
                             <Header.Dropdown>
                                 <Header.Group>
@@ -57,7 +57,6 @@ export default function BrowseContainer({ slides }) {
                     <Header.PlayButton>Play</Header.PlayButton>
                 </Header.Feature>
             </Header>
-
             <Card.Group style={{ marginTop: '-150px' }}>
                 {slides[selection].map((slideItem) => (
           <Card key={`${selection}-${slideItem.title.toLowerCase()}`}>
