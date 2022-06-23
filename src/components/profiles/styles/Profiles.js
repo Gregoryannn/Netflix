@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   width: 100%;
   color: #fff;
-  font-size: 3rem;
+  font-size: 48px;
   text-align: center;
   font-weight: 500;
 `;

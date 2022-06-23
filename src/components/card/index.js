@@ -1,6 +1,21 @@
 import React, { useState, useContext, createContext } from 'react';
-
-import { Container, Group, Title, SubTitle, Text, Feature, Content, Meta, Entities, Item, Image } from './styles/card';
+import CancelIcon from '@material-ui/icons/Cancel';
+import {
+    Container,
+    Group,
+    Title,
+    SubTitle,
+    Text,
+    Feature,
+    FeatureTitle,
+    FeatureText,
+    Maturity,
+    Content,
+    Meta,
+    Entities,
+    Item,
+    Image,
+} from './styles/card';
 
 export const FeatureContext = createContext();
 
@@ -34,10 +49,8 @@ Card.Entities = function CardEntities({ children, ...restProps }) {
 Card.Meta = function CardMeta({ children, ...restProps }) {
     return <Meta {...restProps}>{children}</Meta>;
 };
-
 Card.Item = function CardItem({ item, children, ...restProps }) {
-const { setShowFeature, setItemFeature } = useContext(FeatureContext);
-
+    const { setShowFeature, setItemFeature } = useContext(FeatureContext);
     return (
         <Item
             onClick={() => {
@@ -53,15 +66,24 @@ const { setShowFeature, setItemFeature } = useContext(FeatureContext);
 Card.Image = function CardImage({ ...restProps }) {
     return <Image {...restProps} />;
 };
+
 Card.Feature = function CardFeature({ selectionType, ...restProps }) {
-        const { showFeature, itemFeature } = useContext(FeatureContext);
+    const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
 
-        return showFeature ? (
-            <Feature src={`/images/${selectionType}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
-                <Content>{JSON.stringify(itemFeature)}</Content>
-            </Feature>
-        ) : null;
-    };
+    return showFeature ? (
+        <Feature src={`/images/${selectionType}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+            <Content>
+                <FeatureTitle>{itemFeature.title}</FeatureTitle>
+                <FeatureText>{itemFeature.description}</FeatureText>
+                <CancelIcon fontSize="large" onClick={() => setShowFeature(false)} />
 
-// loading state on cards (placeholder)
-// trigger dropdown panel
+                <Group margin="30px 0" flexDirection="row" alignItems="center">
+                    <Maturity rating={itemFeature.maturity}>{itemFeature.maturity}</Maturity>
+                    <FeatureText fontWeight="bold">
+                        {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                    </FeatureText>
+                </Group>
+            </Content>
+        </Feature>
+    ) : null;
+};

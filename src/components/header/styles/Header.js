@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
 export const Background = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: url(${(props) => (props.src ? `../images/misc/${props.src}.jpg` : '../images/misc/home-bg.jpg')}) top left /
-    cover no-repeat;
+display: flex;
+flex-direction: column;
+background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
+    no-repeat;
 `;
+
 export const Container = styled.div`
   display: flex;
-  margin: 0 3.5rem;
-  height: 4rem;
+  margin: 0 56px;
+  height: 64px;
   padding: 18px 0;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +19,7 @@ export const Link = styled.p`
   color: #fff;
   text-decoration: none;
   margin-right: 30px;
-  font-weight: ${(props) => (props.active === 'true' ? '700' : 'normal')};
+  font-weight: ${({ active }) => (active === 'true' ? '700' : 'normal')};
   cursor: pointer;
   &:hover {
     font-weight: bold;
@@ -31,7 +32,6 @@ export const Group = styled.div`
   display: flex;
   align-items: center;
 `;
-
 export const SearchInput = styled.input`
   background-color: transparent;
   color: white;
@@ -39,11 +39,12 @@ export const SearchInput = styled.input`
   transition: width 0.5s;
   height: 30px;
   font-size: 14px;
-  margin-left: ${(props) => (props.active === true ? '10px' : '0')};
-  padding: ${(props) => (props.active === true ? '0 10px' : '0')};
-  opacity: ${(props) => (props.active === true ? '1' : '0')};
-  width: ${(props) => (props.active === true ? '200px' : '0px')};
+  margin-left: ${({ active }) => (active === true ? '10px' : '0')};
+  padding: ${({ active }) => (active === true ? '0 10px' : '0')};
+  opacity: ${({ active }) => (active === true ? '1' : '0')};
+  width: ${({ active }) => (active === true ? '200px' : '0px')};
 `;
+
 export const Search = styled.div`
   display: flex;
   align-items: center;
@@ -69,8 +70,9 @@ export const ButtonLink = styled(ReachRouterLink)`
     background: #f40612;
   }
 `;
+
 export const Picture = styled.button`
-  background: url(${(props) => props.src});
+  background: url(${({ src }) => src});
   background-size: contain;
   border: 0;
   width: 32px;
@@ -144,7 +146,6 @@ export const Logo = styled.img`
     width: 167px;
   }
 `;
-
 export const PlayButton = styled.button`
   box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
   background-color: #e6e6e6;
