@@ -3,13 +3,11 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\accordion\\styles",
-    "\\src\\components\\footer\\styles",
-    "\\src\\components\\form\\styles",
+    "\\src\\components\\card\\styles",
     "\\src\\components\\header\\styles",
-    "\\src\\components\\loading\\styles",
-    "\\src\\components\\profiles\\styles",
-    "\\src\\containers"
+    "\\src\\components\\jumbotron\\styles",
+    "\\src\\containers",
+    "\\src\\pages"
   ],
   "SelectedNode": "\\src\\containers\\browse.js",
   "PreviewInSolutionExplorer": false
