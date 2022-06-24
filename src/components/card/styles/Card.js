@@ -8,14 +8,12 @@ export const Container = styled.div`
     margin-bottom: 0;
   }
 `;
-
 export const Group = styled.div`
   display: flex;
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
 `;
-
 export const Title = styled.p`
   font-size: 24px;
   color: #e5e5e5;
@@ -57,6 +55,7 @@ export const Image = styled.img`
   border: 0;
   width: 100%;
   max-width: 305px;
+  cursor: pointer;
   height: auto;
   padding: 0;
   margin: 0;
@@ -87,22 +86,23 @@ export const Feature = styled.div`
   display: flex;
   flex-direction: row;
   background: url(${({ src }) => src});
-  background-size: cover;
+  background-size: contain;
   position: relative;
   height: 500px;
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-color: black;
 `;
 
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
 `;
-
 export const FeatureText = styled.p`
   font-size: 18px;
   color: #999;
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
 `;
-
 export const Content = styled.div`
   margin-left: 56px;
   margin-right: 56px;
@@ -117,7 +117,6 @@ export const Content = styled.div`
     cursor: pointer;
   }
 `;
-
 export const Maturity = styled.div`
   background-color: ${({ rating }) => (rating >= 15 ? 'red' : 'green')};
   border-radius: 15px;
