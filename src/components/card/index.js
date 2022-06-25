@@ -1,5 +1,7 @@
 import React, { useState, useContext, createContext } from 'react';
 import CancelIcon from '@material-ui/icons/Cancel';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
 import {
     Container,
     Group,
@@ -15,16 +17,18 @@ import {
     Entities,
     Item,
     Image,
+    PlayButton,
 } from './styles/card';
 
 export const FeatureContext = createContext();
-
 export default function Card({ children, ...restProps }) {
-    const [showFeature, setShowFeature] = useState(false);
-    const [itemFeature, setItemFeature] = useState(false);
+const [showFeature, setShowFeature] = useState(false);
+const [itemFeature, setItemFeature] = useState(false);
+
     return (
         <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
             <Container {...restProps}>{children}</Container>;
+            <Container {...restProps}>{children}</Container>
         </FeatureContext.Provider>
     );
 }
@@ -63,27 +67,36 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
         </Item>
     );
 };
+
 Card.Image = function CardImage({ ...restProps }) {
     return <Image {...restProps} />;
 };
 
-Card.Feature = function CardFeature({ selectionType, ...restProps }) {
-    const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
+Card.PlayButton = function CardPlayButton({ children, ...restProps }) {
+        return <PlayButton>{children}</PlayButton>;
+};
 
-    return showFeature ? (
-        <Feature src={`/images/${selectionType}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
-            <Content>
-                <FeatureTitle>{itemFeature.title}</FeatureTitle>
-                <FeatureText>{itemFeature.description}</FeatureText>
-                <CancelIcon fontSize="large" onClick={() => setShowFeature(false)} />
+Card.Feature = function CardFeature({ category, ...restProps }) {
+        const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
 
-                <Group margin="30px 0" flexDirection="row" alignItems="center">
-                    <Maturity rating={itemFeature.maturity}>{itemFeature.maturity}</Maturity>
-                    <FeatureText fontWeight="bold">
-                        {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
-                    </FeatureText>
-                </Group>
-            </Content>
-        </Feature>
-    ) : null;
+        return showFeature ? (
+                <Feature src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+                    <Content>
+                        <FeatureTitle>{itemFeature.title}</FeatureTitle>
+                        <FeatureText>{itemFeature.description}</FeatureText>
+                        <CancelIcon className="cancel" fontSize="large" onClick={() => setShowFeature(false)} />
+
+                        <Group margin="30px 0" flexDirection="row" alignItems="center">
+                            <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
+                            <FeatureText fontWeight="bold">
+                                {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                            </FeatureText>
+                        </Group>
+                        <PlayButton>
+                            <PlayArrowIcon className="play" />
+                            Play
+                        </PlayButton>
+                    </Content>
+                </Feature>
+                ) : null;
 };

@@ -1,14 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\components",
-    "\\src\\components\\card\\styles",
-    "\\src\\components\\header\\styles",
-    "\\src\\components\\jumbotron\\styles",
-    "\\src\\containers",
-    "\\src\\pages"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\containers\\browse.js",
+  "SelectedNode": "\\src\\seed.js",
   "PreviewInSolutionExplorer": false
 }

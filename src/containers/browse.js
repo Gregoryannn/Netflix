@@ -1,70 +1,98 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Fuse from 'fuse.js';
 import { Card, Header, Loading } from '../components';
 import * as ROUTES from '../constants/routes';
 import logo from '../logo.svg';
 import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer, FooterContainer } from '.';
+import { SelectProfileContainer } from './profiles';
+import { FooterContainer } from './footer';
 
 export default function BrowseContainer({ slides }) {
     const [selection, setSelection] = useState('series');
-    const [profile, setProfile] = useState({});
-    const { firebase } = useContext(FirebaseContext);
-    const user = firebase.auth().currentUser || {};
-    const [loading, setLoading] = useState(true);
+    export function BrowseContainer({ slides }) {
+        const [category, setCategory] = useState('series');
+        const [profile, setProfile] = useState({});
+        const [loading, setLoading] = useState(true);
+        const [searchTerm, setSearchTerm] = useState('');
+        const [slideRows, setSlideRows] = useState([]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
-    }, [profile.displayName]);
-    return profile.displayName ? (
+        const { firebase } = useContext(FirebaseContext);
+        const user = firebase.auth().currentUser || {};
+        const [loading, setLoading] = useState(true);
+
+        useEffect(() => {
+            setTimeout(() => {
+                setLoading(false);
+            }, 3000);
+        }, [profile.displayName]);
+
+        useEffect(() => {
+            setSlideRows(slides[category]);
+        }, [slides, category]);
+
+        useEffect(() => {
+            const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
+            const results = fuse.search(searchTerm).map(({ item }) => item);
+
+            if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+                setSlideRows(results);
+            } else {
+                setSlideRows(slides[category]);
+            }
+        }, [searchTerm]);
+
+        return profile.displayName ? (
     <>
-            {loading ? <Loading src={`/images/users/${user.photoURL}.png`} /> : <Loading.ReleaseBody />}
-            <Header src="joker1">
-                <Header.Frame>
-                    <Header.Group>
-                        <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
-                        <Header.TextLink active={selection === 'series' ? 'true' : 'false'} onClick={() => setSelection('series')}>
-                            Series
-                        </Header.TextLink>
-                        <Header.TextLink active={selection === 'films' ? 'true' : 'false'} onClick={() => setSelection('films')}>
-                            Films
-                        </Header.TextLink>
-                    </Header.Group>
-                    <Header.Group>
-                        <Header.Search />
-                        <Header.Profile>
-                            <Header.Picture src={`/images/users/${user.photoURL}.png`} />
-                            <Header.Dropdown>
-                                <Header.Group>
-                                    <Header.Picture src={`/images/users/${user.photoURL}.png`} />
-                                    <Header.TextLink>{user.displayName}</Header.TextLink>
+                {loading ? <Loading src={`/images/users/${user.photoURL}.png`} /> : <Loading.ReleaseBody />}
+                <Header src="joker1">
+                    <Header.Frame>
+                        <Header.Group>
+                            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+                                <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
+                                    Series
+                                </Header.TextLink>
+                                    <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
+                                        Films
+                                    </Header.TextLink>
                                 </Header.Group>
                                 <Header.Group>
-                                    <Header.TextLink onClick={() => firebase.auth().signOut()}>Sign out</Header.TextLink>
+                                    <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                                    <Header.Profile>
+                                        <Header.Picture src={`/images/users/${user.photoURL}.png`} />
+                                        <Header.Dropdown>
+                                            <Header.Group>
+                                                <Header.Picture src={`/images/users/${user.photoURL}.png`} />
+                                                <Header.TextLink>{user.displayName}</Header.TextLink>
+                                            </Header.Group>
+                                            <Header.Group>
+                                                <Header.TextLink onClick={() => console.log('favourites')}>Favourites</Header.TextLink>
+                                            </Header.Group>
+                                            <Header.Group>
+                                                <Header.TextLink onClick={() => firebase.auth().signOut()}>Sign out</Header.TextLink>
+                                            </Header.Group>
+                                        </Header.Dropdown>
+                                    </Header.Profile>
                                 </Header.Group>
-                            </Header.Dropdown>
-                        </Header.Profile>
-                    </Header.Group>
-                </Header.Frame>
-                <Header.Feature>
-                    <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
-                    <Header.Text>
-                        Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
-                        City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
-                        futile attempt to feel like he's part of the world around him.
-                    </Header.Text>
-                    <Header.PlayButton>Play</Header.PlayButton>
-                </Header.Feature>
-            </Header>
-            <Card.Group style={{ marginTop: '-150px' }}>
-                {slides[selection].map((slideItem) => (
-          <Card key={`${selection}-${slideItem.title.toLowerCase()}`}>
+                            </Header.Frame>
+                            <Header.Feature>
+                                <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
+                                <Header.Text>
+                                    Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
+                                    City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
+                                    futile attempt to feel like he's part of the world around him.
+                                </Header.Text>
+                                <Header.PlayButton>Play</Header.PlayButton>
+                            </Header.Feature>
+                        </Header>
+                        <Card.Group style={{ marginTop: '-150px' }}>
+                           {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
             <Card.Entities>
               {slideItem.data.map((item) => (
                 <Card.Item key={item.docId} item={item}>
-                  <Card.Image src={`/images/${selection}/${item.genre}/${item.slug}/small.jpg`} />
+                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
                     <Card.Text>{item.description}</Card.Text>
@@ -72,13 +100,13 @@ export default function BrowseContainer({ slides }) {
                 </Card.Item>
               ))}
             </Card.Entities>
-          <Card.Feature selectionType={selection} />
+            <Card.Feature category={category} />
           </Card>
         ))}
       </Card.Group>
       <FooterContainer />
     </>
-            ) : (
-                      <SelectProfileContainer user={user} setProfile={setProfile} />
-            );
+                        ) : (
+                        <SelectProfileContainer user={user} setProfile={setProfile} />
+                        );
 }
