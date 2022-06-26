@@ -1,12 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
 export const Background = styled.div`
-display: flex;
-flex-direction: column;
-background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
+  display: flex;
+  flex-direction: column;
+  background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
     no-repeat;
 `;
-
 export const Container = styled.div`
   display: flex;
   margin: 0 56px;
@@ -44,7 +43,6 @@ export const SearchInput = styled.input`
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
 `;
-
 export const Search = styled.div`
   display: flex;
   align-items: center;
@@ -70,7 +68,6 @@ export const ButtonLink = styled(ReachRouterLink)`
     background: #f40612;
   }
 `;
-
 export const Picture = styled.button`
   background: url(${({ src }) => src});
   background-size: contain;
@@ -87,10 +84,16 @@ export const Dropdown = styled.div`
   width: 100px;
   top: 32px;
   right: 10px;
+  ${Group}:last-of-type ${Link} {
+    cursor: pointer;
+  }
   ${Group} {
     margin-bottom: 10px;
     &:last-of-type {
       margin-bottom: 0;
+    }
+    ${Link}, ${Picture} {
+      cursor: default;
     }
   }
   button {
@@ -106,11 +109,14 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   margin-left: 20px;
-  cursor: pointer;
   position: relative;
   svg {
     color: white;
     margin-left: 5px;
+  }
+  button,
+  svg {
+    cursor: pointer;
   }
   &:hover > ${Dropdown} {
     display: flex;

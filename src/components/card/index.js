@@ -22,21 +22,17 @@ import {
 
 export const FeatureContext = createContext();
 export default function Card({ children, ...restProps }) {
-const [showFeature, setShowFeature] = useState(false);
-const [itemFeature, setItemFeature] = useState(false);
-
+    const [showFeature, setShowFeature] = useState(false);
+    const [itemFeature, setItemFeature] = useState(false);
     return (
         <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
-            <Container {...restProps}>{children}</Container>;
             <Container {...restProps}>{children}</Container>
         </FeatureContext.Provider>
     );
 }
+
 Card.Group = function CardGroup({ children, ...restProps }) {
     return <Group {...restProps}>{children}</Group>;
-};
-Card.Title = function CardTitle({ children, ...restProps }) {
-    return <Title {...restProps}>{children}</Title>;
 };
 Card.Title = function CardTitle({ children, ...restProps }) {
     return <Title {...restProps}>{children}</Title>;
@@ -71,32 +67,22 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
 Card.Image = function CardImage({ ...restProps }) {
     return <Image {...restProps} />;
 };
-
-Card.PlayButton = function CardPlayButton({ children, ...restProps }) {
-        return <PlayButton>{children}</PlayButton>;
-};
-
-Card.Feature = function CardFeature({ category, ...restProps }) {
+Card.Feature = function CardFeature({ children, category, ...restProps }) {
         const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
-
         return showFeature ? (
-                <Feature src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
-                    <Content>
-                        <FeatureTitle>{itemFeature.title}</FeatureTitle>
-                        <FeatureText>{itemFeature.description}</FeatureText>
-                        <CancelIcon className="cancel" fontSize="large" onClick={() => setShowFeature(false)} />
-
-                        <Group margin="30px 0" flexDirection="row" alignItems="center">
-                            <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
-                            <FeatureText fontWeight="bold">
-                                {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
-                            </FeatureText>
-                        </Group>
-                        <PlayButton>
-                            <PlayArrowIcon className="play" />
-                            Play
-                        </PlayButton>
-                    </Content>
-                </Feature>
-                ) : null;
-};
+            <Feature src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+                <Content>
+                    <FeatureTitle>{itemFeature.title}</FeatureTitle>
+                    <FeatureText>{itemFeature.description}</FeatureText>
+                    <CancelIcon className="cancel" fontSize="large" onClick={() => setShowFeature(false)} />
+                    <Group margin="30px 0" flexDirection="row" alignItems="center">
+                        <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
+                        <FeatureText fontWeight="bold">
+                            {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                        </FeatureText>
+                    </Group>
+                          {children}
+                </Content>
+            </Feature>
+        ) : null;
+    };

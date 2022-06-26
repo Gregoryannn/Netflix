@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -88,28 +88,25 @@ export const Feature = styled.div`
   background: url(${({ src }) => src});
   background-size: contain;
   position: relative;
-  height: 500px;
+  height: 360px;
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: black;
 `;
-
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
 `;
 export const FeatureText = styled.p`
   font-size: 18px;
-  color: #999;
+  color: white;
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
 `;
 export const Content = styled.div`
-  margin-left: 56px;
-  margin-right: 56px;
-  margin-top: 56px;
+  margin: 56px;
   max-width: 500px;
   line-height: normal;
-  svg {
+  svg.cancel {
     color: white;
     position: absolute;
     right: 20px;
@@ -117,6 +114,7 @@ export const Content = styled.div`
     cursor: pointer;
   }
 `;
+
 export const Maturity = styled.div`
   background-color: ${({ rating }) => (rating >= 15 ? 'red' : 'green')};
   border-radius: 15px;
@@ -125,6 +123,7 @@ export const Maturity = styled.div`
   text-align: center;
   color: white;
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   margin-right: 10px;
+  font-size: 12px;
 `;

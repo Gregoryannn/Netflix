@@ -1,8 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\feature\\styles",
+    "\\src\\components\\footer\\styles",
+    "\\src\\components\\form\\styles",
+    "\\src\\components\\header\\styles",
+    "\\src\\components\\jumbotron\\styles",
+    "\\src\\components\\profiles\\styles",
+    "\\src\\pages"
   ],
-  "SelectedNode": "\\src\\seed.js",
+  "SelectedNode": "\\src\\pages\\signup.js",
   "PreviewInSolutionExplorer": false
 }
