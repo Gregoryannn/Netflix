@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-
 export const Title = styled.p`
   font-size: 24px;
   color: #e5e5e5;
@@ -22,20 +21,17 @@ export const Container = styled.div`
     margin-bottom: 0;
   }
 `;
-
 export const Group = styled.div`
   display: flex;
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
- 
   > ${Container}:first-of-type {
     @media (min-width: 1100px) {
       margin-top: -150px;
     }
   }
 `;
-
 export const SubTitle = styled.p`
   font-size: 12px;
   color: #fff;
@@ -109,7 +105,11 @@ export const FeatureText = styled.p`
   color: white;
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
+  @media (max-width: 600px) {
+    line-height: 22px;
+  }
 `;
+
 export const Feature = styled.div`
   display: flex;
   flex-direction: row;
@@ -136,17 +136,23 @@ export const Feature = styled.div`
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
 `;
+export const FeatureClose = styled.button`
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  img {
+    filter: brightness(0) invert(1);
+    width: 24px;
+  }
+`;
 export const Content = styled.div`
   margin: 56px;
   max-width: 500px;
   line-height: normal;
-  svg.cancel {
-    color: white;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    cursor: pointer;
-  }
   @media (max-width: 1000px) {
     margin: 30px;
     max-width: none;
