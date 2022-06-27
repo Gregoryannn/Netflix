@@ -1,10 +1,13 @@
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
 export const Background = styled.div`
-display: flex;
-flex-direction: column;
-background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
+  display: flex;
+  flex-direction: column;
+  background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover
     no-repeat;
+  @media (max-width: 1100px) {
+    ${({ dontShowOnSmallViewPort }) => dontShowOnSmallViewPort && `background: none;`}
+  }
 `;
 
 export const Container = styled.div`
@@ -14,7 +17,14 @@ export const Container = styled.div`
   padding: 18px 0;
   justify-content: space-between;
   align-items: center;
+  a {
+    display: flex;
+  }
+  @media (max-width: 1000px) {
+    margin: 0 30px;
+  }
 `;
+
 export const Link = styled.p`
   color: #fff;
   text-decoration: none;
@@ -32,8 +42,9 @@ export const Group = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const SearchInput = styled.input`
-  background-color: transparent;
+  background-color: #44444459;
   color: white;
   border: 1px solid white;
   transition: width 0.5s;
@@ -44,7 +55,6 @@ export const SearchInput = styled.input`
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
 `;
-
 export const Search = styled.div`
   display: flex;
   align-items: center;
@@ -52,7 +62,11 @@ export const Search = styled.div`
     color: white;
     cursor: pointer;
   }
+  @media (max-width: 700px) {
+    display: none;
+  }
 `;
+
 export const ButtonLink = styled(ReachRouterLink)`
   display: block;
   background-color: #e50914;
@@ -70,7 +84,6 @@ export const ButtonLink = styled(ReachRouterLink)`
     background: #f40612;
   }
 `;
-
 export const Picture = styled.button`
   background: url(${({ src }) => src});
   background-size: contain;
@@ -87,10 +100,16 @@ export const Dropdown = styled.div`
   width: 100px;
   top: 32px;
   right: 10px;
+  ${Group}:last-of-type ${Link} {
+    cursor: pointer;
+  }
   ${Group} {
     margin-bottom: 10px;
     &:last-of-type {
       margin-bottom: 0;
+    }
+    ${Link}, ${Picture} {
+      cursor: default;
     }
   }
   button {
@@ -106,11 +125,14 @@ export const Profile = styled.div`
   display: flex;
   align-items: center;
   margin-left: 20px;
-  cursor: pointer;
   position: relative;
   svg {
     color: white;
     margin-left: 5px;
+  }
+  button,
+  svg {
+    cursor: pointer;
   }
   &:hover > ${Dropdown} {
     display: flex;
@@ -122,7 +144,11 @@ export const Feature = styled(Container)`
   flex-direction: column;
   align-items: normal;
   width: 50%;
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
+
 export const FeatureCallOut = styled.h2`
   color: white;
   font-size: 50px;

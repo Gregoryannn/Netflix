@@ -1,23 +1,18 @@
-import React, { useState, useEffect, useContext, createRef, createContext } from 'react';
+import React, { useState, useContext, createContext } from 'react';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ReactDOM from 'react-dom';
 import { Container, Button, Overlay, Inner } from './styles/player';
-
 export const PlayerContext = createContext();
-
 export default function Player({ children, ...restProps }) {
     const [showPlayer, setShowPlayer] = useState(false);
-
     return (
         <PlayerContext.Provider value={{ showPlayer, setShowPlayer }}>
             <Container {...restProps}>{children}</Container>
         </PlayerContext.Provider>
     );
 }
-
 Player.Video = function PlayerVideo({ ...restProps }) {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext);
-
     return showPlayer
         ? ReactDOM.createPortal(
             <Overlay onClick={() => setShowPlayer(false)}>
@@ -31,10 +26,8 @@ Player.Video = function PlayerVideo({ ...restProps }) {
         )
         : null;
 };
-
 Player.Button = function PlayerButton({ ...restProps }) {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext);
-
     return (
         <Button onClick={() => setShowPlayer(!showPlayer)}>
             <PlayArrowIcon className="play" />

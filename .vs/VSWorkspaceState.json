@@ -3,14 +3,12 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\feature\\styles",
-    "\\src\\components\\footer\\styles",
-    "\\src\\components\\form\\styles",
+    "\\src\\components\\card\\styles",
     "\\src\\components\\header\\styles",
-    "\\src\\components\\jumbotron\\styles",
+    "\\src\\components\\player\\styles",
     "\\src\\components\\profiles\\styles",
-    "\\src\\pages"
+    "\\src\\hooks"
   ],
-  "SelectedNode": "\\src\\pages\\signup.js",
+  "SelectedNode": "\\src\\hooks\\use-Content.js",
   "PreviewInSolutionExplorer": false
 }

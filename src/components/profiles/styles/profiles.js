@@ -20,17 +20,15 @@ export const List = styled.ul`
   display: flex;
   flex-direction: row;
 `;
-
 export const Name = styled.p`
   color: #808080;
   text-overflow: ellipsis;
-  font-size: 1rem;
+  font-size: 16px;
   &:hover {
     font-weight: bold;
     color: #e5e5e5;
   }
 `;
-
 export const Picture = styled.img`
   width: 100%;
   max-width: 150px;
@@ -45,7 +43,6 @@ export const Item = styled.li`
   text-align: center;
   margin-right: 30px;
   cursor: pointer;
-
   &:hover > ${Picture} {
     border: 3px solid white;
   }
@@ -57,4 +54,3 @@ export const Item = styled.li`
     margin-right: 0;
   }
 `;
-
