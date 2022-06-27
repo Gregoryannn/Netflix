@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-
 export const Title = styled.p`
   font-size: 24px;
   color: #e5e5e5;
@@ -106,7 +105,11 @@ export const FeatureText = styled.p`
   color: white;
   font-weight: ${({ fontWeight }) => (fontWeight === 'bold' ? 'bold' : 'normal')};
   margin: 0;
+  @media (max-width: 600px) {
+    line-height: 22px;
+  }
 `;
+
 export const Feature = styled.div`
   display: flex;
   flex-direction: row;
@@ -117,7 +120,6 @@ export const Feature = styled.div`
   background-position-x: right;
   background-repeat: no-repeat;
   background-color: black;
-
   @media (max-width: 1000px) {
     height: auto;
     background-size: auto;
@@ -134,7 +136,6 @@ export const Feature = styled.div`
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
 `;
-
 export const FeatureClose = styled.button`
   color: white;
   position: absolute;
@@ -148,12 +149,10 @@ export const FeatureClose = styled.button`
     width: 24px;
   }
 `;
-
 export const Content = styled.div`
   margin: 56px;
   max-width: 500px;
   line-height: normal;
-  
   @media (max-width: 1000px) {
     margin: 30px;
     max-width: none;
