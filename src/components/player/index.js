@@ -1,7 +1,7 @@
 import React, { useState, useContext, createContext } from 'react';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ReactDOM from 'react-dom';
 import { Container, Button, Overlay, Inner } from './styles/player';
+
 export const PlayerContext = createContext();
 export default function Player({ children, ...restProps }) {
     const [showPlayer, setShowPlayer] = useState(false);
@@ -28,10 +28,7 @@ Player.Video = function PlayerVideo({ ...restProps }) {
 };
 Player.Button = function PlayerButton({ ...restProps }) {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext);
-    return (
-        <Button onClick={() => setShowPlayer(!showPlayer)}>
-            <PlayArrowIcon className="play" />
-            Play
-        </Button>
-    );
+
+ 
+    return <Button onClick={() => setShowPlayer(!showPlayer)}>Play</Button>;
 };

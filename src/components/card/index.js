@@ -1,6 +1,4 @@
 import React, { useState, useContext, createContext } from 'react';
-import CancelIcon from '@material-ui/icons/Cancel';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 import {
     Container,
@@ -11,13 +9,13 @@ import {
     Feature,
     FeatureTitle,
     FeatureText,
+    FeatureClose,
     Maturity,
     Content,
     Meta,
     Entities,
     Item,
     Image,
-    PlayButton,
 } from './styles/card';
 
 export const FeatureContext = createContext();
@@ -63,26 +61,28 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
         </Item>
     );
 };
-
 Card.Image = function CardImage({ ...restProps }) {
     return <Image {...restProps} />;
 };
 Card.Feature = function CardFeature({ children, category, ...restProps }) {
-        const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
-        return showFeature ? (
-            <Feature src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
-                <Content>
-                    <FeatureTitle>{itemFeature.title}</FeatureTitle>
-                    <FeatureText>{itemFeature.description}</FeatureText>
-                    <CancelIcon className="cancel" fontSize="large" onClick={() => setShowFeature(false)} />
-                    <Group margin="30px 0" flexDirection="row" alignItems="center">
-                        <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
-                        <FeatureText fontWeight="bold">
-                            {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
-                        </FeatureText>
-                    </Group>
-                          {children}
-                </Content>
-            </Feature>
-        ) : null;
-    };
+    const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
+    return showFeature ? (
+        <Feature src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+            <Content>
+                <FeatureTitle>{itemFeature.title}</FeatureTitle>
+                <FeatureText>{itemFeature.description}</FeatureText>
+                <FeatureClose onClick={() => setShowFeature(false)}>
+                    <img src="/images/icons/close.png" alt="Close" />
+                </FeatureClose>
+
+                <Group margin="30px 0" flexDirection="row" alignItems="center">
+                    <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
+                    <FeatureText fontWeight="bold">
+                        {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                    </FeatureText>
+                </Group>
+                {children}
+            </Content>
+        </Feature>
+    ) : null;
+};
