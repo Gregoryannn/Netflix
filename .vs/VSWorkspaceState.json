@@ -2,13 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
+    "\\src\\components\\accordion\\styles",
     "\\src\\components\\card\\styles",
+    "\\src\\components\\footer\\styles",
     "\\src\\components\\header\\styles",
+    "\\src\\components\\jumbotron\\styles",
+    "\\src\\components\\opt-form\\styles",
     "\\src\\components\\player\\styles",
-    "\\src\\components\\profiles\\styles",
-    "\\src\\hooks"
+    "\\src\\__tests__\\components"
   ],
-  "SelectedNode": "\\src\\hooks\\use-Content.js",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
