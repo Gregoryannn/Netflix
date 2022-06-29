@@ -2,15 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components\\accordion\\styles",
-    "\\src\\components\\card\\styles",
-    "\\src\\components\\footer\\styles",
-    "\\src\\components\\header\\styles",
-    "\\src\\components\\jumbotron\\styles",
-    "\\src\\components\\opt-form\\styles",
-    "\\src\\components\\player\\styles",
-    "\\src\\__tests__\\components"
+    "\\src\\components",
+    "\\src\\components\\Modal\\CreateCommunity",
+    "\\src\\components\\Navbar",
+    "\\src\\components\\Navbar\\Directory",
+    "\\src\\lib"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\src\\components\\Navbar\\Directory\\index.tsx",
   "PreviewInSolutionExplorer": false
 }
