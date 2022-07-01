@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components\\form\\styles",
-    "\\src\\components\\Navbar\\Directory",
+    "\\src\\pages",
     "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\utils\\selection-filter.js",
+  "SelectedNode": "\\src\\pages\\signup.js",
   "PreviewInSolutionExplorer": false
 }
