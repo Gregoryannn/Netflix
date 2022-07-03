@@ -2,10 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\components",
-    "\\src\\components\\accordion",
-    "\\src\\components\\accordion\\styles"
+    "\\src\\components\\card\\styles",
+    "\\src\\components\\footer\\styles",
+    "\\src\\components\\form\\styles",
+    "\\src\\components\\header\\styles",
+    "\\src\\components\\opt-form\\styles",
+    "\\src\\components\\player\\styles"
   ],
-  "SelectedNode": "\\src\\components\\accordion\\styles\\accordion.js",
+  "SelectedNode": "\\src\\globalStyles.js",
   "PreviewInSolutionExplorer": false
 }
