@@ -4,11 +4,10 @@
     "\\src",
     "\\src\\components\\card\\styles",
     "\\src\\components\\footer\\styles",
-    "\\src\\components\\form\\styles",
     "\\src\\components\\header\\styles",
     "\\src\\components\\opt-form\\styles",
     "\\src\\components\\player\\styles"
   ],
-  "SelectedNode": "\\src\\globalStyles.js",
+  "SelectedNode": "\\src\\global-styles.js",
   "PreviewInSolutionExplorer": false
 }

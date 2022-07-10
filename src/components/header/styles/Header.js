@@ -1,6 +1,7 @@
+
+src / components / header / styles / header.js
 import styled from 'styled-components/macro';
 import { Link as ReachRouterLink } from 'react-router-dom';
-
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,6 +41,7 @@ export const Group = styled.div`
   display: flex;
   align-items: center;
 `;
+
 export const SearchInput = styled.input`
   background-color: rgba(64, 64, 64, 0.5);
   color: white;
@@ -52,12 +54,11 @@ export const SearchInput = styled.input`
   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
   opacity: ${({ active }) => (active === true ? '1' : '0')};
   width: ${({ active }) => (active === true ? '200px' : '0px')};
-
   &:focus {
     background-color: rgba(0, 0, 0, 0.8);
   }
-
 `;
+
 export const Search = styled.div`
   display: flex;
   align-items: center;
@@ -69,7 +70,6 @@ export const Search = styled.div`
     display: none;
   }
 `;
-
 export const SearchIcon = styled.button`
   cursor: pointer;
   background-color: transparent;
@@ -81,13 +81,11 @@ export const SearchIcon = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   img {
     filter: brightness(0) invert(1);
     width: 16px;
   }
 `;
-
 export const ButtonLink = styled(ReachRouterLink)`
   display: block;
   background-color: #e50914;
@@ -100,12 +98,11 @@ export const ButtonLink = styled(ReachRouterLink)`
   padding: 8px 17px;
   cursor: pointer;
   text-decoration: none;
-
+  box-sizing: border-box;
   &:hover {
     background: #f40612;
   }
 `;
-
 export const Picture = styled.button`
   background: url(${({ src }) => src});
   background-size: contain;
@@ -114,7 +111,6 @@ export const Picture = styled.button`
   height: 32px;
   cursor: pointer;
 `;
-
 export const Dropdown = styled.div`
   display: none;
   position: absolute;
@@ -131,13 +127,11 @@ export const Dropdown = styled.div`
     &:last-of-type {
       margin-bottom: 0;
     }
-
     ${Link} {
       cursor: pointer;
     }
     ${Picture} {
-
-cursor: default;
+      cursor: default;
     }
   }
   button {
@@ -149,13 +143,11 @@ cursor: default;
     margin-top: 0;
   }
 `;
-
 export const Profile = styled.div`
   display: flex;
   align-items: center;
   margin-left: 20px;
   position: relative;
-
   button {
     cursor: pointer;
   }
@@ -164,18 +156,15 @@ export const Profile = styled.div`
     flex-direction: column;
   }
 `;
-
 export const Feature = styled(Container)`
   padding: 150px 0 500px 0;
   flex-direction: column;
   align-items: normal;
   width: 50%;
-
   @media (max-width: 1100px) {
     display: none;
   }
 `;
-
 export const FeatureCallOut = styled.h2`
   color: white;
   font-size: 50px;
@@ -184,7 +173,6 @@ export const FeatureCallOut = styled.h2`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
   margin: 0;
 `;
-
 export const Text = styled.p`
   color: white;
   font-size: 22px;
@@ -194,15 +182,13 @@ export const Text = styled.p`
 
 export const Logo = styled.img`
   height: 36px;
-  width: 134px
-
+  width: 134px;
   margin-right: 40px;
   @media (min-width: 1449px) {
     height: 45px;
     width: 167px;
   }
 `;
-
 export const PlayButton = styled.button`
   box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
   background-color: #e6e6e6;
